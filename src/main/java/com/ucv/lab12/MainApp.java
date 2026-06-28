@@ -13,12 +13,12 @@ public class MainApp extends Application {
         AppContext context = AppContext.getInstance();
 
         FXMLLoader loader = new FXMLLoader(
-            getClass().getResource("/com/ucv/lab12/distribuidor-view.fxml")
+                getClass().getResource("/com/ucv/lab12/main-view.fxml")
         );
         loader.setControllerFactory(context::getController);
 
         Scene scene = new Scene(loader.load(), 1100, 620);
-        stage.setTitle("Mantenimiento de Distribuidores");
+        stage.setTitle("Sistema de Videojuegos");
         stage.setScene(scene);
         stage.setMinWidth(900);
         stage.setMinHeight(500);
@@ -26,7 +26,5 @@ public class MainApp extends Application {
     }
 
     @Override
-    public void stop() {
-        AppContext.getInstance().destroy();
-    }
+    public void stop() { AppContext.getInstance().destroy(); }
 }

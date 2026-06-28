@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane xmlns="http://javafx.com/javafx/21"
+         xmlns:fx="http://javafx.com/fxml/1"
+         tabClosingPolicy="UNAVAILABLE"
+         style="-fx-background-color:#F5F5F5;">
+
+    <tabs>
+        <Tab text="Distribuidores">
+            <content>
+                <fx:include source="distribuidor-view.fxml"/>
+            </content>
+        </Tab>
+        <Tab text="Videojuegos">
+            <content>
+                <fx:include source="videojuego-view.fxml"/>
+            </content>
+        </Tab>
+    </tabs>
+
+</TabPane>

@@ -17,26 +17,32 @@ public class DatabaseConfig implements AutoCloseable {
      *   2. Configuración de red de SQL Server -> Protocolos de SQLEXPRESS
      *   3. Habilita "TCP/IP" y reinicia el servicio SQL Server (SQLEXPRESS).
      */
-    private static final String DEFAULT_URL =
+    private static final String URL =
+            /*"jdbc:sqlserver://localhost:1433;"
+                    + "instanceName=SQLEXPRESS;"
+                    + "databaseName=lab12;"
+                    + "user=da;"
+                    + "password=123456;"
+                    + "trustServerCertificate=true;"
+                    + "encrypt=false;";*/
+
             "jdbc:sqlserver://localhost:53322;"
             + "instanceName=.\\SQLEXPRESS;"
-            + "databaseName=lab12;"
+            + "databaseName=Laboratorio12;"
+            + "user=DiegoV;"
+            + "password=123456789;"
             + "trustServerCertificate=true;"
             + "encrypt=false;";
 
-    private static final String URL =
-            System.getenv().getOrDefault("LAB12_DB_URL", DEFAULT_URL);
-
-    private static final String USER =
-            System.getenv("LAB12_DB_USER");
-
-    private static final String PASSWORD =
-            System.getenv("LAB12_DB_PASSWORD");
-
     public Connection getConnection() throws SQLException {
-        if (USER != null && !USER.isBlank()) {
-            return DriverManager.getConnection(URL, USER, PASSWORD == null ? "" : PASSWORD);
+        /*Connection conn = null;
+        try{
+            conn = DriverManager.getConnection(URL);
+        }        catch (Exception e) {
+            e.printStackTrace();
         }
+
+        return conn;*/
         return DriverManager.getConnection(URL);
     }
 
