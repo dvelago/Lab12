@@ -1,30 +1,28 @@
 package com.ucv.lab12;
 
-import com.ucv.lab12.config.AppContext;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MainApp extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        AppContext context = AppContext.getInstance();
+    public void start(Stage stage) throws IOException {
+        // Inicializa cargando el login-view primero
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ucv/lab12/login-view.fxml"));
 
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/ucv/lab12/main-view.fxml")
-        );
-        loader.setControllerFactory(context::getController);
+        Scene scene = new Scene(loader.load());
 
-        Scene scene = new Scene(loader.load(), 1100, 620);
-        stage.setTitle("Sistema de Videojuegos");
+        stage.setTitle("Iniciar Sesión - UGEL");
         stage.setScene(scene);
-        stage.setMinWidth(900);
-        stage.setMinHeight(500);
+        stage.setResizable(false); // Fija el tamaño del Login
         stage.show();
     }
 
-    @Override
-    public void stop() { AppContext.getInstance().destroy(); }
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

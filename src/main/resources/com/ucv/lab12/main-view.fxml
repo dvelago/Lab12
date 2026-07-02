@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<TabPane xmlns="http://javafx.com/javafx/21"
-         xmlns:fx="http://javafx.com/fxml/1"
-         tabClosingPolicy="UNAVAILABLE"
-         style="-fx-background-color:#F5F5F5;">
+<VBox prefHeight="500.0" prefWidth="800.0" spacing="15.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://fxml.com/fx/1" fx:controller="com.ucv.lab12.controller.DeudaController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label text="Sistema de Gestión de Deudas - UGEL" textFill="#1d3557">
+            <font>
+                <Font name="System Bold" size="22.0" />
+            </font>
+        </Label>
 
-    <tabs>
-        <Tab text="Distribuidores">
-            <content>
-                <fx:include source="distribuidor-view.fxml"/>
-            </content>
-        </Tab>
-        <Tab text="Videojuegos">
-            <content>
-                <fx:include source="videojuego-view.fxml"/>
-            </content>
-        </Tab>
-    </tabs>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label text="Buscar Docente por DNI:" />
+                <TextField fx:id="txtDniBuscar" promptText="Ingrese DNI..." prefWidth="200.0" />
+                <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#manejarBuscar" text="Buscar" />
+                <Button mnemonicParsing="false" onAction="#abrirVentanaAgregarDocente" text="+ Nuevo Docente" style="-fx-background-color: #2a9d8f; -fx-text-fill: white;" />
+            </children>
+        </HBox>
 
-</TabPane>
+        <TableView fx:id="tblDeudas" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colIdDeuda" prefWidth="80.0" text="ID Deuda" />
+                <TableColumn fx:id="colIdDocente" prefWidth="100.0" text="ID Docente" />
+                <TableColumn fx:id="colMonto" prefWidth="120.0" text="Monto (S/.)" />
+                <TableColumn fx:id="colTipo" prefWidth="150.0" text="Tipo de Deuda" />
+                <TableColumn fx:id="colEstado" prefWidth="120.0" text="Estado" />
+                <TableColumn fx:id="colFecha" prefWidth="150.0" text="Fecha Registro" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>
